@@ -9,6 +9,8 @@ import { PaginaPrincipalComponent } from "./components/pagina-principal/pagina-p
 import { EncabezadoComponent } from "./plantilla/encabezado/encabezado.component";
 import { PiePaginaComponent } from "./plantilla/pie-pagina/pie-pagina.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { ResaltarDirective } from './core/directives/resaltar.directive';
 
 @NgModule({
   declarations: [
@@ -17,9 +19,15 @@ import { ReactiveFormsModule } from "@angular/forms";
     InicioSesionComponent,
     PaginaPrincipalComponent,
     EncabezadoComponent,
-    PiePaginaComponent
+    PiePaginaComponent,
+    ResaltarDirective
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

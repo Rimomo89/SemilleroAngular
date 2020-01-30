@@ -7,15 +7,26 @@ import { EncabezadoComponent } from "./plantilla/encabezado/encabezado.component
 import { PiePaginaComponent } from "./plantilla/pie-pagina/pie-pagina.component";
 
 const routes: Routes = [
+  { path: '', component: PlantillaComponent },
   { path: "login", component: InicioSesionComponent },
   { path: "principal", component: PaginaPrincipalComponent },
   { path: "plantilla", component: PlantillaComponent },
   { path: "encabezado", component: EncabezadoComponent },
-  { path: "piepagina", component: PiePaginaComponent }
+  { path: "piepagina", component: PiePaginaComponent },
+  {
+    path: "plantilla",
+    component: PlantillaComponent,
+    children: [
+      {
+        path: "pagina-principal",
+        component: PaginaPrincipalComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
