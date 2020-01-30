@@ -11,7 +11,7 @@ export class InicioSesionComponent implements OnInit {
   inicioSesionForm: FormGroup;
   nombre = "Ricardo";
 
-  constructor(private iniciarSesion: InicioSesionService) {}
+  constructor(private iniciarSesion: InicioSesionService) { }
 
   ngOnInit() {
     this.CrearFormulario();
@@ -29,6 +29,15 @@ export class InicioSesionComponent implements OnInit {
 
   EnviarFormulario() {
     console.log("formulario", this.inicioSesionForm.value);
-    this.iniciarSesion.iniciarSesion(this.inicioSesionForm.value);
+    this.iniciarSesion.iniciarSesion(this.inicioSesionForm.value).subscribe(datos => {
+      console.log('datos', datos);
+    },
+      error => {
+        console.error(error);
+      },
+      () => { console.log('console'); }
+
+
+    );
   }
 }

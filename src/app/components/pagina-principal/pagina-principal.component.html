@@ -1,1 +1,21 @@
 <p appResaltar>pagina-principal works!</p>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Primer Nombre</th>
+        <th scope="col">Segundo Nombre</th>
+        <th scope="col">Primer Apellido</th>
+        <th scope="col">Segundo Apellido</th>
+        <th scope="col">Cedula</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of arreglo">
+        <td>{{usuario.primerNombre}}</td>
+        <td>{{usuario.segundoNombre}}</td>
+        <td>{{usuario.primerApellido}}</td>
+        <td>{{usuario.segundoApellido}}</td>
+        <td>{{usuario.cedula}}</td>
+      </tr>
+    </tbody>
+  </table>

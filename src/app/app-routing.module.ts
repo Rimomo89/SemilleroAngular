@@ -6,22 +6,17 @@ import { PlantillaComponent } from "./plantilla/plantilla.component";
 import { EncabezadoComponent } from "./plantilla/encabezado/encabezado.component";
 import { PiePaginaComponent } from "./plantilla/pie-pagina/pie-pagina.component";
 
+
 const routes: Routes = [
-  { path: '', component: PlantillaComponent },
-  { path: "login", component: InicioSesionComponent },
-  { path: "principal", component: PaginaPrincipalComponent },
-  { path: "plantilla", component: PlantillaComponent },
-  { path: "encabezado", component: EncabezadoComponent },
-  { path: "piepagina", component: PiePaginaComponent },
+  { path: '', redirectTo: 'plantilla', pathMatch: 'full' },
+  { path: 'login', component: InicioSesionComponent },
   {
-    path: "plantilla",
-    component: PlantillaComponent,
-    children: [
-      {
-        path: "pagina-principal",
-        component: PaginaPrincipalComponent
-      }
-    ]
+    path: 'plantilla', component: PlantillaComponent, children: [{
+      path: '', redirectTo: 'principal', pathMatch: 'full'
+    },
+    {
+      path: 'principal', component: PaginaPrincipalComponent
+    }]
   }
 ];
 
