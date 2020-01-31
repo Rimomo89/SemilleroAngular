@@ -8,7 +8,7 @@ export class ResaltarDirective {
   constructor(private el: ElementRef) { }
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.aplicarColor('red');
+    this.aplicarColor('green');
   }
 
   @HostListener('mouseleave') onMouseLeave() {

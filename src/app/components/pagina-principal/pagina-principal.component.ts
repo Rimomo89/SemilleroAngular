@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PaginaPrincipalService } from '../../app/services/pagina-principal/pagina-principal.service';
 import { Usuarios } from '../../dto/usuarios';
+import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-pagina-principal',
@@ -9,21 +10,27 @@ import { Usuarios } from '../../dto/usuarios';
 })
 export class PaginaPrincipalComponent implements OnInit {
 
-  private arreglo: Usuarios[];
+  arreglo: Usuarios[];
+  cedula: number;
 
   constructor(private diligenciar: PaginaPrincipalService) { }
 
+
   llenarTabla() {
     this.diligenciar.llenarTabla().subscribe(datos => {
-      console.log('datos', datos);
       this.arreglo = datos;
+      console.log('datos', datos.sort());
     },
       error => {
         console.error(error);
       },
-      () => { console.log('console'); }
+      () => {
+        console.log("complete");
+        this.arreglo = this.arreglo.sort((a, b) => a.primerNombre.localeCompare(b.primerNombre));
+      }
     );
   }
+
 
   ngOnInit() {
     this.llenarTabla();

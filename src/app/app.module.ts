@@ -8,9 +8,11 @@ import { InicioSesionComponent } from "./components/inicio-sesion/inicio-sesion.
 import { PaginaPrincipalComponent } from "./components/pagina-principal/pagina-principal.component";
 import { EncabezadoComponent } from "./plantilla/encabezado/encabezado.component";
 import { PiePaginaComponent } from "./plantilla/pie-pagina/pie-pagina.component";
-import { ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ResaltarDirective } from './core/directives/resaltar.directive';
+import { FiltroPipe } from './core/pipes/filtro.pipe';
+import { InicioSesionService } from './core/interceptors/inicioSesion/inicio-sesion.service';
 
 @NgModule({
   declarations: [
@@ -20,15 +22,19 @@ import { ResaltarDirective } from './core/directives/resaltar.directive';
     PaginaPrincipalComponent,
     EncabezadoComponent,
     PiePaginaComponent,
-    ResaltarDirective
+    ResaltarDirective,
+    FiltroPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InicioSesionService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

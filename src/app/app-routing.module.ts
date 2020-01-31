@@ -5,13 +5,14 @@ import { PaginaPrincipalComponent } from "./components/pagina-principal/pagina-p
 import { PlantillaComponent } from "./plantilla/plantilla.component";
 import { EncabezadoComponent } from "./plantilla/encabezado/encabezado.component";
 import { PiePaginaComponent } from "./plantilla/pie-pagina/pie-pagina.component";
+import { AutenticadoGuard } from './core/guard/autenticado.guard';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'plantilla', pathMatch: 'full' },
   { path: 'login', component: InicioSesionComponent },
   {
-    path: 'plantilla', component: PlantillaComponent, children: [{
+    path: 'plantilla', component: PlantillaComponent, canActivate: [AutenticadoGuard], children: [{
       path: '', redirectTo: 'principal', pathMatch: 'full'
     },
     {

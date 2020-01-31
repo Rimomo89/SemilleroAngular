@@ -1,4 +1,6 @@
 <p appResaltar>pagina-principal works!</p>
+<label for="usuario">Ingrese un número de cédula: </label>
+<input type="text" class="formControl" id="cedula" [(ngModel)]="cedula">
 <table class="table table-bordered">
     <thead>
       <tr>
@@ -10,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let usuario of arreglo">
+      <tr appResaltar *ngFor="let usuario of arreglo | filtro : cedula; index as i">
         <td>{{usuario.primerNombre}}</td>
         <td>{{usuario.segundoNombre}}</td>
         <td>{{usuario.primerApellido}}</td>
